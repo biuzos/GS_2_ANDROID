@@ -3,12 +3,16 @@ package br.com.fiap.gabriel_ximenes_rm87285.ui.ListUser
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import br.com.fiap.gabriel_ximenes_rm87285.db.Users
 import br.com.fiap.gabriel_ximenes_rm87285.repository.UserRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-class UsersListViewModel (
+@HiltViewModel
+class UsersListViewModel @Inject constructor(
     private val repository: UserRepository
 ) : ViewModel() {
 
@@ -18,10 +22,8 @@ class UsersListViewModel (
 
 
     fun getUsers() {
-        _users.value = listOf(
-            Users(1, "Gabriel", "gabriel@gmail.com", "123456"),
-            Users(2, "Fernando", "gabriel@gmail.com", "123456"),
-            Users(3, "Jose", "gabriel@gmail.com", "123456")
-        )
+        viewModelScope.launch(Dispatchers.IO) {
+            _users.postValue(repository.getAll())
+        }
     }
 }
