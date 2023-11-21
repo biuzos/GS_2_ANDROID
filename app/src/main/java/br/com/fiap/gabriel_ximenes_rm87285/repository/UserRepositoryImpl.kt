@@ -19,6 +19,10 @@ class UserRepositoryImpl @Inject constructor(
         return usersDao.getByEmailAndPassword(email, password)
     }
 
+    override suspend fun getByEmail(email: String): Users? {
+        return usersDao.getByEmail(email)
+    }
+
     override suspend fun deleteById(id: Int) {
         return usersDao.deleteById(id)
     }

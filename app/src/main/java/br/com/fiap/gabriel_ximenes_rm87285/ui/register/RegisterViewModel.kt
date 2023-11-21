@@ -19,4 +19,8 @@ class RegisterViewModel @Inject constructor(
             repository.insert(user = user)
         }
     }
+    suspend fun getUserByEmail(email: String) : Boolean{
+        val user = repository.getByEmail(email)
+        return user != null
+    }
 }

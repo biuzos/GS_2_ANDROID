@@ -30,4 +30,7 @@ interface UsersDao {
     @Query("DELETE FROM users WHERE id = :id")
     suspend fun deleteById(id: Int)
 
+    @Query("SELECT * FROM users WHERE email = :email")
+    suspend fun getByEmail(email: String): Users?
+
 }
