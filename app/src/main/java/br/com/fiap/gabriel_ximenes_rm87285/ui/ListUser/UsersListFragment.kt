@@ -6,6 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
+import br.com.fiap.gabriel_ximenes_rm87285.R
 import br.com.fiap.gabriel_ximenes_rm87285.databinding.FragmentUsersListBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -36,6 +38,10 @@ class UsersListFragment : Fragment() {
 
         usersListViewModel.users.observe(viewLifecycleOwner) { userList ->
             adapter.setList(usersList = userList)
+        }
+
+        binding.buttonList.setOnClickListener {
+            findNavController().navigate(R.id.usersListFragment_to_doencasFragment)
         }
     }
 }

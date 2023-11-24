@@ -49,7 +49,7 @@ class RegisterFragment : Fragment() {
             val password = binding.passwordEditTextRegister.editText?.text.toString()
 
             if (name.isBlank() || email.isBlank() || password.isBlank()) {
-                Toast.makeText(requireContext(), "All fields are required", Toast.LENGTH_SHORT)
+                Toast.makeText(requireContext(), "Todos os campos são obrigatórios!", Toast.LENGTH_SHORT)
                     .show()
                 return
             }
@@ -58,7 +58,7 @@ class RegisterFragment : Fragment() {
                 val isEmailRegistered = registerViewModel.getUserByEmail(email)
                 if (isEmailRegistered) {
                     binding.emailEditTextRegister.error = "Email já cadastrado!"
-                    Toast.makeText(requireContext(), "Email already registered", Toast.LENGTH_SHORT)
+                    Toast.makeText(requireContext(), "Email já cadastrado!", Toast.LENGTH_SHORT)
                         .show()
                 } else {
                     val user = Users(

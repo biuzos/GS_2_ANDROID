@@ -22,5 +22,13 @@
     <fragment
         android:id="@+id/usersListFragment"
         android:name="br.com.fiap.gabriel_ximenes_rm87285.ui.ListUser.UsersListFragment"
-        android:label="UsersListFragment" />
+        android:label="UsersListFragment" >
+        <action
+            android:id="@+id/usersListFragment_to_doencasFragment"
+            app:destination="@id/doencasFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/doencasFragment"
+        android:name="br.com.fiap.gabriel_ximenes_rm87285.ui.doencas.DoencasFragment"
+        android:label="DoencasFragment" />
 </navigation>
